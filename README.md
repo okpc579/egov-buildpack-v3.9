@@ -84,19 +84,14 @@ egov_buildpack_v39       12         true      false    egov-buildpack-offline-eg
 PaaS-TA에서 전자정부 프레임워크 빌드팩을 사용하여 애플리케이션을 배포하는 방법을 설명하기 위해 전자정부 프레임워크가 적용된 샘플 애플리케이션을 배포한다.
 
 
-#### 1. 샘플 애플리케이션 다운로드
+#### 1. 샘플 애플리케이션 확인
 
-- PaaS-TA 팀에서 제공하는 샘플 애플리케이션 다운로드  
-
->PaaSTA-Sample-Apps : **<https://paas-ta.kr/data/packages/2.0/PaaSTA-Sample-Apps.zip>**  
-
-
-압축 파일을 다운로드하고 압축을 해제하면 다음 경로에서 샘플 애플리케이션 war 파일과 manifest 파일을 찾을 수 있다.
+빌드팩과 같은경로의 경로에서 샘플 애플리케이션 war 파일과 manifest 파일을 찾을 수 있다.
 
 - 샘플 애플리케이션 확인  
 
->애플리케이션 war 파일 : Egov/hellot-egov-board/for_push/hello-egov-board-1.0.0.war  
->manifest 파일 : Egov/hellot-egov-board/for_push/manifest.yml
+>애플리케이션 war 파일 : egov-buildpack-v3.9/Sample-App/egov-board-3.9.war  
+>manifest 파일 : egov-buildpack-v3.9/Sample-App/manifest.yml
 
 
 #### 2. Manifest 수정
@@ -108,12 +103,13 @@ PaaS-TA 전자정부 프레임워크 빌드팩은 두 가지 WAS(Tomcat/Jboss)�
 ```
 ---
 applications:
-- name: hello-egov-boardT 
+- name: egov-board-3.9
   memory: 1024M
   instances: 1
-  path: hello-egov-board-1.0.0.war 
+  path: egov-board-3.9.war 
   env:
     JBP_CONFIG_COMPONENTS: '[containers: Tomcat]'
+    #JBP_CONFIG_COMPONENTS: '[containers: Jboss]'
 ```
 
 - manifest 파일 수정 (Jboss 선택)  
@@ -122,11 +118,12 @@ applications:
 ```
 ---
 applications:
-- name: hello-egov-boardT 
+- name: egov-board-3.9
   memory: 1024M
   instances: 1
-  path: hello-egov-board-1.0.0.war 
+  path: egov-board-3.9.war 
   env:
+    #JBP_CONFIG_COMPONENTS: '[containers: Tomcat]'
     JBP_CONFIG_COMPONENTS: '[containers: Jboss]'
 ```
 
@@ -136,7 +133,7 @@ applications:
 - 샘플 애플리케이션 디렉토리로 이동  
 현재 디렉토리에 애플리케이션 war 파일과 manifest 파일이 존재해야 한다. 
 
-`cd Egov/hellot-egov-board/for_push`
+`cd egov-buildpack-v3.9/Sample-App/manifest.yml
 
 - 애플리케이션 배포  
 [상단](#notice-01)에 서술한대로, 샘플 애플리케이션은 빌드팩을 지정하지 않은 경우에는 Java 빌드팩으로 배포되기 때문에 적절한 배포가 이루어지지 않는다. 반드시 업로드한 전자정부 프레임워크 빌드팩을 지정하여 배포한다.
@@ -150,9 +147,9 @@ applications:
 requested state: started
 instances: 1/1
 usage: 1G x 1 instances
-urls: hello-egov-boardt.115.68.46.186.xip.io
+urls: egov-board-39.115.68.46.186.xip.io
 last uploaded: Wed Feb 8 08:40:27 UTC 2017
-stack: cflinuxfs2
+stack: cflinuxfs3
 buildpack: egov_buildpack_v39
 
      state     since                    cpu      memory         disk           details
@@ -166,17 +163,16 @@ buildpack: egov_buildpack_v39
 
 ```
 name                requested state   instances   memory   disk   urls
-hello-egov-boardT   started           1/1         1G       1G     hello-egov-boardt.115.68.46.186.xip.io
+egov-board-3.9   started           1/1         1G       1G     egov-board-39.115.68.46.186.xip.io
 ```
 
 - 애플리케이션 접속 확인  
 브라우저를 통해 애플리케이션 url로 접속한다.
 
 ```
-http://hello-egov-boardt.115.68.46.186.xip.io/
+http://egov-board-39.115.68.46.186.xip.io/
 ```
-
-데이터 베이스 설정을 하지 않았기 때문에 오류 메시지가 나오지만 빌드팩은 정상적으로 동작하는 것이 확인된다.  
+  
 ![egov_buildpack_image_01]
 
 
