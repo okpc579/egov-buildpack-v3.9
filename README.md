@@ -183,7 +183,7 @@ egov-board-3.9   started           1/1         1G       1G     egov-board-39.115
 ```
 
 - 애플리케이션 접속 확인  
-브라우저를 통해 애플리케이션 url로 접속한다.
+브라우저를 통해 애플리케이션 url로 접속한다.  
 Admin 계정의 ID와 PW는 admin/1 이다.
 
 ```
