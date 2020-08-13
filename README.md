@@ -149,7 +149,7 @@ applications:
 - 샘플 애플리케이션 디렉토리로 이동  
 현재 디렉토리에 애플리케이션 war 파일과 manifest 파일이 존재해야 한다. 
 
-`cd egov-buildpack-v3.9/Sample-App/manifest.yml
+cd egov-buildpack-v3.9/Sample-App/manifest.yml
 
 - 애플리케이션 배포  
 [상단](#notice-01)에 서술한대로, 샘플 애플리케이션은 빌드팩을 지정하지 않은 경우에는 Java 빌드팩으로 배포되기 때문에 적절한 배포가 이루어지지 않는다. 반드시 업로드한 전자정부 프레임워크 빌드팩을 지정하여 배포한다.
