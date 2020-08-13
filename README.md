@@ -22,6 +22,20 @@ Bundle complete! 10 Gemfile dependencies, 28 gems now installed.
 Use `bundle info [gemname]` to see where a bundled gem is installed.
 ```  
 
+##### 2-1. 온라인 패키징(권장)
+`bundle exec rake package`  
+※ 'OFFLINE=true' 옵션은 온라인 빌드팩으로 패키징하는 옵션이다.
+
+```
+...
+Creating build/egov-buildpack-egov3.9.zip
+```  
+
+다음 경로에 패키징 파일이 생성된다.
+`build/egov-buildpack-egov3.9.zip`
+
+
+##### 2-2. 오프라인 패키징
 `bundle exec rake package OFFLINE=true`  
 ※ 'OFFLINE=true' 옵션은 오프라인 빌드팩으로 패키징하는 옵션이다. 오프라인 빌드팩은 빌드팩이 동작하는데 필요한 모든 컴포넌트들을 다운로드하여 패키징에 포함시킨다. 오프라인 빌드팩을 사용할 경우, 오프라인 상태에서 애플리케이션 배포가 가능하다.
 
@@ -32,6 +46,9 @@ Creating build/egov-buildpack-offline-egov3.9.zip
 
 다음 경로에 패키징 파일이 생성된다.
 `build/egov-buildpack-offline-egov3.9.zip`
+
+
+
 
 
 #### 3. 빌드팩 업로드
