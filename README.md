@@ -176,4 +176,4 @@ http://egov-board-39.115.68.46.186.xip.io/
 ![egov_buildpack_image_01]
 
 
-[egov_buildpack_image_01]:https://github.com/OpenPaaSRnD/Documents-PaaSTA-2.0/blob/master/images/paasta-egov-buildpack/egov_buildpack_image_01.jpg
+[egov_buildpack_image_01]:https://github.com/okpc579/egov-buildpack-v3.9/blob/master/Sample-App/egov_buildpack_image_01.PNG
