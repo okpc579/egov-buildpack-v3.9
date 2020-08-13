@@ -1,5 +1,5 @@
 # PaaS-TA 전자정부 프레임워크(egovframework) 빌드팩
-PaaS-TA에서 구동되는 애플리케이션은 다양한 언어, 프레임워크를 사용하여 개발될 수 있다. 빌드팩은 이처럼 다양한 환경에서 개발된 애플리케이션이 PaaS-TA에서 구동될 수 있게 지원하는 역할을 한다. 전자정부 프레임워크 빌드팩 v3.5는 전자정부 프레임워크 (https://www.egovframe.go.kr/) 를 적용하여 개발된 애플리케이션이 PaaS-TA에서 구동될 수 있도록 지원한다.
+PaaS-TA에서 구동되는 애플리케이션은 다양한 언어, 프레임워크를 사용하여 개발될 수 있다. 빌드팩은 이처럼 다양한 환경에서 개발된 애플리케이션이 PaaS-TA에서 구동될 수 있게 지원하는 역할을 한다. 전자정부 프레임워크 빌드팩 v3.9는 전자정부 프레임워크 (https://www.egovframe.go.kr/) 를 적용하여 개발된 애플리케이션이 PaaS-TA에서 구동될 수 있도록 지원한다.
 
 
 ### PaaS-TA에 전자정부 프레임워크 빌드팩 등록
@@ -9,7 +9,7 @@ PaaS-TA에서 전자정부 빌드팩을 등록하기 위해서는 빌드팩 소�
 #### 1. 빌드팩 소스 clone
 git 명령어를 이용하여 소스를 clone 한다. git 명령어를 사용하기 위해서는 git의 설치가 요구된디. 사용자의 환경에 맞게 git을 설치한다.
 
-`git clone https://github.com/OpenPaaSRnD/egov-buildpack-v3.5.git`  
+`git clone https://github.com/paas-ta/egov-buildpack-v3.9.git`  
 
 
 #### 2. 빌드팩 패키지
@@ -27,11 +27,11 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 
 ```
 ...
-Creating build/egov-buildpack-offline-egov3.5.zip
+Creating build/egov-buildpack-offline-egov3.9.zip
 ```  
 
 다음 경로에 패키징 파일이 생성된다.
-`build/egov-buildpack-offline-egov3.5.zip`
+`build/egov-buildpack-offline-egov3.9.zip`
 
 
 #### 3. 빌드팩 업로드
@@ -49,13 +49,13 @@ Creating build/egov-buildpack-offline-egov3.5.zip
 <div id='notice-01'></div>
 ※ 기본적으로 빌드팩은 검출 기준을 가지고 있다. 이를 통해 애플리케이션 배포시, 사용자가 빌드팩을 지정해주지 않아도 해당 소스에 맞는 빌드팩을 자동으로 찾아준다. 이떄, 같은 검출 기준을 가진 빌드팩이 여러개 있을 경우에는 우선순위에 따라 가장 우선순위가 높은 빌드팩을 사용하게 된다. 전자정부 프레임워크 빌드팩은 Java 빌드팩과 동일한 검출 기준을 갖고 있기 때문에 전자정부 프레임워크 빌드팩의 우선순위가 Java 빌드팩보다 높을 경우, 빌드팩을 지정하지 않고 배포하는 일반 Java 애플리케이션이 전자정부 프레임워크 빌드팩을 사용하게 된다. 이러한 혼란을 방지하기 위해 전자정부 프레임워크 빌드팩은 Java 빌드팩보다 우선 순위를 낮게 지정한다. (번호가 낮을 수록 우선순위가 높기 때문에 Java 빌드팩보다 높은 번호로 지정한다.)
 
-`cf create-buildpack egov_buildpack_v35 build/egov-buildpack-offline-egov3.5.zip 12`  
+`cf create-buildpack egov_buildpack_v39 build/egov-buildpack-offline-egov3.9.zip 12`  
 
 ```
-Creating buildpack egov_buildpack_v35...
+Creating buildpack egov_buildpack_v39...
 OK
 
-Uploading buildpack egov_buildpack_v35...
+Uploading buildpack egov_buildpack_v39...
 Done uploading
 OK
 ```
@@ -77,7 +77,7 @@ php_buildpack            8          true      false    php_buildpack-cached-v4.3
 binary_buildpack         9          true      false    binary_buildpack-cached-v1.0.5.zip
 dotnet_core_buildpack    10         true      false    dotnet-core_buildpack-cached-v1.0.4.zip
 pinpoint_buildpack       11         true      false    java-buildpack-offline-pinpoint-v2.zip
-egov_buildpack_v35       12         true      false    egov-buildpack-offline-egov3.5.zip
+egov_buildpack_v39       12         true      false    egov-buildpack-offline-egov3.9.zip
 ```
 
 ### 전자정부 프레임워크 빌드팩 사용
@@ -141,7 +141,7 @@ applications:
 - 애플리케이션 배포  
 [상단](#notice-01)에 서술한대로, 샘플 애플리케이션은 빌드팩을 지정하지 않은 경우에는 Java 빌드팩으로 배포되기 때문에 적절한 배포가 이루어지지 않는다. 반드시 업로드한 전자정부 프레임워크 빌드팩을 지정하여 배포한다.
 
-`cf push -b egov_buildpack_v35`
+`cf push -b egov_buildpack_v39`
 ```
 ...
 [ConfigurationUtilsForWAS]       INFO  Configuration from /tmp/buildpacks/67244c9413ffe25f3325b3d9f2548860/config/components.yml modified with: [containers: Tomcat]
@@ -153,7 +153,7 @@ usage: 1G x 1 instances
 urls: hello-egov-boardt.115.68.46.186.xip.io
 last uploaded: Wed Feb 8 08:40:27 UTC 2017
 stack: cflinuxfs2
-buildpack: egov_buildpack_v35
+buildpack: egov_buildpack_v39
 
      state     since                    cpu      memory         disk           details
 #0   running   2017-02-08 05:41:59 PM   158.4%   371.5M of 1G   182.1M of 1G
