@@ -24,7 +24,6 @@ Use `bundle info [gemname]` to see where a bundled gem is installed.
 
 ##### 2-1. 온라인 패키징(권장)
 `bundle exec rake package`  
-※ 'OFFLINE=true' 옵션은 온라인 빌드팩으로 패키징하는 옵션이다.
 
 ```
 ...
