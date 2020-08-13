@@ -13,13 +13,13 @@ git 명령어를 이용하여 소스를 clone 한다. git 명령어를 사용하
 
 
 #### 2. 빌드팩 패키지
-빌드팩 패키지는 clone한 소스를 바탕으로 빌드팩 패키지 파일을 생성하는 단계이다. 빌드팩을 패키지 하기 위해서 ruby와 bundler의 설치가 요구된다. 요구 버전은 Ruby 2.2.4, bundler 1.13.6 이다. 
+빌드팩 패키지는 clone한 소스를 바탕으로 빌드팩 패키지 파일을 생성하는 단계이다. 빌드팩을 패키지 하기 위해서 ruby와 bundler의 설치가 요구된다. 요구 버전은 Ruby 2.3.8, bundler 2.0.2 이다. 
 
 `bundle install`  
 ```
 ...
-Bundle complete! 11 Gemfile dependencies, 29 gems now installed.
-Use `bundle show [gemname]` to see where a bundled gem is installed.
+Bundle complete! 10 Gemfile dependencies, 28 gems now installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed.
 ```  
 
 `bundle exec rake package OFFLINE=true`  
